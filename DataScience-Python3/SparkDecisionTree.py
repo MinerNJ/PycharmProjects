@@ -40,7 +40,7 @@ def createLabeledPoints(fields):
         previousEmployers, educationLevel, topTier, interned]))
 
 #Load up our CSV file, and filter out the header line with the column names
-rawData = sc.textFile("e:/sundog-consult/udemy/datascience/PastHires.csv")
+rawData = sc.textFile("C:\\Users\\nickm\\PythonProjects\\DataScience-Python3\\PastHires.csv")
 header = rawData.first()
 rawData = rawData.filter(lambda x:x != header)
 
