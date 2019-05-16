@@ -7,7 +7,7 @@ conf = SparkConf().setMaster("local").setAppName("SparkTFIDF")
 sc = SparkContext(conf = conf)
 
 # Load documents (one per line).
-rawData = sc.textFile("e:/sundog-consult/Udemy/DataScience/subset-small.tsv")
+rawData = sc.textFile("C:\\Users\\nickm\\PythonProjects\\DataScience-Python3\\subset-small.tsv")
 fields = rawData.map(lambda x: x.split("\t"))
 documents = fields.map(lambda x: x[3].split(" "))
 
@@ -34,7 +34,7 @@ tfidf = idf.transform(tf)
 
 # First, let's figure out what hash value "Gettysburg" maps to by finding the
 # index a sparse vector from HashingTF gives us back:
-gettysburgTF = hashingTF.transform(["Gettysburg"])
+gettysburgTF = hashingTF.transform(["Python"])
 gettysburgHashValue = int(gettysburgTF.indices[0])
 
 # Now we will extract the TF*IDF score for Gettsyburg's hash value into
