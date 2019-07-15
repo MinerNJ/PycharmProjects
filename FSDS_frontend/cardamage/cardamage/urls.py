@@ -22,5 +22,6 @@ from carapp import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index, name='index'),
-    url(r'^list/', views.list, name='list')
+    url(r'^list/', views.list, name='list'),
+    url(r'^engine/', views.engine, name='engine')
 ] +static(settings.PIC_URL, document_root = settings.PIC_ROOT)
