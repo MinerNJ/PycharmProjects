@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang = "en" dir="ltr">
+ <head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="{% static "style.css" %}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ </head>
+<body class = 'bodyContainer'>
+        <ul class='nav navbar-nav'>
+            <li> <a class='navbar-brand' href="">Process</a></li>
+            <li> <a class='navbar-link' href="{% url 'index' %}">Home</a></li>
+        <ul>
+ <div class="container">
+ {% block body_block%}
+
+ {% endblock %}
+</body>
+</html>
