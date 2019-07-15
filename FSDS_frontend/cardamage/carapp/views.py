@@ -75,7 +75,7 @@ graph = tf.get_default_graph()
 #Preparing flat image
 def prepare_flat(img_224):
     base_model = load_model('static/vgg16.h5')
-    model = Model(inputs=base_model.input, outputs=base_model.get_layer('fc1').output)
+    model = Model(input=base_model.input, output=base_model.get_layer('fc1').output)
     feature = model.predict(img_224)
     flat = feature.flatten()
     flat = np.expand_dims(flat, axis=0)
@@ -125,11 +125,11 @@ def car_damage_check(img_flat):
         return False
 
 #Third check - damage location
-def damage_locator(imng_flat):
+def damage_locator(img_flat):
     print("Locating area damaged - front, side or rear.")
     third_check = pk.load(open('static/third_check.pickle', 'rb'))
-    train_labels = ['Front', 'Side', 'Rear']
-    preds = third_check.predict(imng_flat)
+    train_labels = ['Front', 'Rear', 'Side']
+    preds = third_check.predict(img_flat)
     prediction = train_labels[preds[0]]
     print("Your car is damaged at - " + train_labels[preds[0]])
     print("Damage location assessment complete.")
@@ -146,7 +146,6 @@ def severity_assessment(img_flat):
     print("The damage done to your car is rated as - " + train_labels[preds[0]])
     print("Damage severity estimate complete")
     print("\n")
-    print("Thanks for testing my model!")
     return prediction
 
 #Engine
@@ -177,7 +176,7 @@ def engine(request):
                     g1_pic = "Car confirmed"
                             
                 if g2 is False:
-                    g1_pic = "Could not recognize picture of car. Please submit a different picture."
+                    g1_pic = "Car appears undamaged. Please submit a \n different picture of your damaged car."
                     g2_pic = 'N/A'
                     g3 = 'N/A'
                     g4 = 'N/A'
@@ -187,7 +186,7 @@ def engine(request):
                     g2_pic = "Car damage confirmed. See below for damage location and severity."
                     g3 = damage_locator(img_flat)
                     g4 = severity_assessment(img_flat)
-                    ns='a). Create a report and send to dealer \n b). Proceed to cost estimate.'
+                    ns='a). Create a report and send to dealer \n b). Proceed to cost estimate. \n c). View nearby dealerships.'
                     break
             except:
                 break

@@ -8,11 +8,16 @@
  </head>
 <body>
         <ul class='nav navbar-nav'>
-            <li> <a class='navbar-brand' href="{% url 'engine' %}">Process</a></li>
-            <li> <a class='navbar-link' href="{% url 'index' %}">Home</a></li>
+            <li> <a class='navbar-brand' href="{% url 'index' %}">Home</a></li>
+            <li> <a class='navbar-link' href="{% url 'engine' %}">Process</a></li>
         <ul>
  {% block body_block%}
-
  {% endblock %}
+
+  <div class="bottom">
+    <p>Please choose a .jpg file of your damaged vehicle and click "upload".</p>
+    <p> After uploading the picture, please click "process" to begin damage evaluation.
+    </p>
+    </div>
 </body>
 </html>
