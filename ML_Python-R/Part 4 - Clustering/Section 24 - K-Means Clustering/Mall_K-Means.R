@@ -1,4 +1,4 @@
-dataset <- read.csv("Mall_Customers.csv")
+  dataset <- read.csv("Mall_Customers.csv")
 x <- dataset[4:5]
 
 #Using the elbow method to find the optimal number of clusters
