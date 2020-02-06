@@ -52,7 +52,6 @@ cv = lapply(folds, function(x) {
 accuracy = mean(as.numeric(cv))
 
 # Applying Grid Search to find the best parameters
-# install.packages('caret')
 library(caret)
 classifier = train(form = Purchased ~ ., data = training_set, method = 'svmRadial')
 classifier
